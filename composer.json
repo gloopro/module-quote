@@ -1,0 +1,23 @@
+{
+    "name": "gloo/module-quote",
+    "license": "proprietary",
+    "type": "magento2-module",
+    "description": "Module to extend Magento Quote",
+    "require": {
+        "magento/module-quote": "100.0.*"
+    },
+    "authors":[
+        {
+            "name":"Gloo.ng Engineering",
+            "email":"engineering@gloo.ng"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Gloo\\Quote\\": ""
+        }
+    }
+}
