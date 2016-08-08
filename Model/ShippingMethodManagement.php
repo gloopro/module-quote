@@ -1,10 +1,12 @@
 <?php
 
 namespace Gloo\Quote\Model;
-use Magento\Quote\Model\ShippingMethodManagement as CoreShippingMethodManagement;
 
 
-class ShippingMethodManagement extends CoreShippingMethodManagement{
+
+class ShippingMethodManagement extends \Magento\Quote\Model\ShippingMethodManagement{
+
+    
 
     /**
      * {@inheritDoc}
