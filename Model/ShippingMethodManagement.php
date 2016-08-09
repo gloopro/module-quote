@@ -31,6 +31,28 @@ class ShippingMethodManagement extends \Magento\Quote\Model\ShippingMethodManage
         );
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function estimateByAddress($cartId, \Magento\Quote\Api\Data\EstimateAddressInterface $address)
+    {
+        /** @var \Magento\Quote\Model\Quote $quote */
+        $quote = $this->quoteRepository->getActive($cartId);
+
+        // no methods applicable for empty carts or carts with virtual products
+        if ($quote->isVirtual() || 0 == $quote->getItemsCount()) {
+            return [];
+        }
+
+        return $this->getEstimatedRates(
+            $quote,
+            $address->getCountryId(),
+            $address->getPostcode(),
+            $address->getRegionId(),
+            $this->resolveRegion($address)
+        );
+    }
+
     public function resolveRegion($address){
         $region = $address->getRegion();
         if(is_object($region)){
